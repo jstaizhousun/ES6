@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明变量
+        let a;
+        //声明多个变量
+        let b,c,d;
+        //声明并赋值
+        let e = 100;
+        let f = 521,g = 1314,h = 223;
+
+        //1、let 变量无法重复声明
+        //2、let声明的为块级作用域
+        // {
+        //     let girl = 'shiry';
+        // }
+        // console.log(girl) //girl is not defined
+        //3、 不存在变量提升
+        // console.log(song)
+        // var song = '两只老虎'
+        //4、 不影响作用域链
+        {
+            let name = '小明'
+            function fn() {
+                console.log(name)
+            }
+        }
+        fn();
+    </script>
+</body>
+</html>
