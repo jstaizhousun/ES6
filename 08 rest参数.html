@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES6  引入 rest 参数，用于获取函数的实参，用来代替arguments
+        //ES5 获取实参
+        function date(){
+            //对象
+            console.log(arguments)
+        }
+        date('1','2','3')
+        //rest 参数
+        function date2(...args){
+            //数组
+            console.log(args)
+        }
+        date('1','2','3')
+        //rest 参数必须放到最后
+        function date3(a,b,...args){
+            console.log(a)
+            console.log(b)
+            console.log(args)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //ES6允许使用箭头=>定义函数
+        //声明一个函数
+        let fn = (a, b) => {
+            return a + b
+        }
+        //调用
+        let result = fn(1, 2);
+        console.log(result)
+
+
+        //1、this值是静态的
+        //2、this始终指向函数声明时所在作用域下的this的值
+        function getName() {
+            console.log(this.name)
+        }
+        let getName2 = () => {
+            console.log(this.name)
+        }
+
+        //window的name值
+        window.name = '李华'
+        const school = {
+            name: '奥特曼培训中心',
+            getName,
+            getName2,
+            getName3: () => {
+                console.log(this.name)
+            }
+        }
+        //直接调用
+        getName();
+        getName2();
+
+        //call方法调用
+        getName.call(school)
+        getName2.call(school)
+
+        //在对象中调用
+        school.getName()
+        school.getName2()
+        school.getName3()
+
+        //箭头函数不能作为构造实例化对象
+        let Person = (name, age) => {
+            this.name = name;
+            this.age = age;
+        }
+        // let me = new Person('sam',30)
+        //箭头函数不能使用arguments 变量
+        let fn = () => {
+            console.log(arguments)
+        }
+        // fn(1,2,3)
+        //当形参只有一个时可省略小括号
+        let add = n => {
+            return n + n
+        }
+        //省略花括号，当代码只有一条语句的时候，return必须省略
+        let pow = n => n * n;
+        console.log(pow(8))
+
+        //箭头函数适合于this无关的回调，例如定时器、数组方法的回调
+
+        //箭头函数不适合与this有关的回调，例如事件的回调、对象的方法
+    </script>
+</body>
+
+</html>
