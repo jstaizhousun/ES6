@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // ...扩展运算符能将数组转换为逗号分隔的参数序列
+        //声明一个数组
+        const NAMEARR = ['小明','小芳','小兰']
+        function test(){
+            console.log(arguments)
+            console.log(arguments[0])
+        }
+        test(NAMEARR)
+        test(...NAMEARR)
+
+        //1、数组的合并
+        const NAME2 = ['SAM','ALY','BOB']
+        
+        const ALL = NAME2.concat(NAMEARR)
+        const ALL2 = [...NAMEARR,...NAME2]
+
+        //2、数组的克隆
+        const flower = ['1','2','3']
+        //浅拷贝
+        const san = [...flower]
+        //3、将伪数组转为真正的数组
+        const DIVS = document.querySelectorAll('div')
+        const divArr = [...DIVS]
+        
+
+    </script>
+</body>
+</html>

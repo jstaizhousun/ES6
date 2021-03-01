@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //iterator 为不同的数据解构提供统一的访问机制
+        //1、iterator接口主要提供for...of消费
+        //2、原生具有iterator
+
+        //声明一个数组
+        const xiyou = ['唐僧', '孙悟空', '猪八戒', '沙僧']
+        //for...of遍历
+        for (let v of xiyou) {
+            console.log(v)
+        }
+        for (let v in xiyou) {
+            console.log(v)
+        }
+        //所有具有Symbol.iterator都可以使用for...of遍历
+        console.log(xiyou)
+        //1、工作原理
+        //a)创建一个指针对象，指向当前数据解构的起始位置
+        //b)第一次调用对象的next方法，指针自动指向数据解构的第一个成员
+        //c)不断调用next方法，指针一直往后移动，知道指向最后一个成员
+        //d)每调用next方法，返回一个包含value和done属性的对象
+        let iterator = xiyou[Symbol.iterator]();
+        //调用对象的next方法
+        console.log(iterator)
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+
+
+        //迭代器的应用
+        //自定义遍历数据
+        //声明一个对象
+        const banji = {
+            name: '六一班',
+            stus: ['小明', '小芳', '小花'],
+            [Symbol.iterator]() {
+                //索引变量
+                let index = 0;
+                return {
+                    next:()=> {
+                        if (index < this.stus.length) {
+                            const result =  {
+                                value: this.stus[index],
+                                done: false
+                            };
+                            index ++;
+                            return result
+                        }else{
+                            return {value:undefined,done:true}
+                        }
+                    }
+                };
+            }
+        }
+        //遍历对象获取学生姓名
+        // banji.stus.forEach()
+        for(let v of banji){
+            console.log(v)
+        }
+
+    </script>
+</body>
+
+</html>

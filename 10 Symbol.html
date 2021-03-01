@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1、Symbol值是唯一的，可以用来解决命名冲突
+        //2、Symbol值不能与其他数据进行运算
+        //3、Symbol定义的对象属性不能使用for...in循环遍历，但是可以使用Reflect.ownkeys来获取对象的所有键名
+
+
+        //创建Symbol
+        let s = Symbol()
+        console.log(s, typeof (s))
+        let s2 = Symbol('sam')
+        console.log(s2)
+        let s3 = Symbol('sam')
+        console.log(s3)
+        console.log(s2 === s3)
+        console.log(s2 == s3)
+        //Symbol.for创建
+        let s4 = Symbol.for('sam')
+        let s5 = Symbol.for('sam')
+        console.log(s4, typeof (s4))
+        console.log(s4 === s5) //true
+
+        //Symbol使用
+        //向对象中添加方法、属性 up down
+        let game = {
+            name:'贪吃蛇',
+            up:function(){
+                console.log('我是原本的上')
+            },
+            down:function(){
+                console.log('我是原本的下')
+            }
+        }
+        let methods = {
+            up:Symbol(),
+            down:Symbol()
+        }
+        game[methods.up] = function(){
+            console.log('上')
+        }
+        game[methods.down] = function(){
+            console.log('下')
+        }
+        console.log(game)
+        game.up()
+        game[methods.up]()
+
+        //Symbol的内置属性
+        class Person{
+            //控制类型检测
+            static [Symbol.hasInstance](params){
+                console.log('检测类型')
+                console.log(params)
+                return true
+            }
+        }
+        let o = {};
+        console.log(o instanceof Person)
+    </script>
+</body>
+
+</html>

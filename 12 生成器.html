@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //生成器函数是ES6提供的一种异步编程解决方案
+        //生成器是一种特殊的函数
+        //原来 异步编程纯回调函数
+        //yield 函数代码的分割符，3个分隔符产生4个代码块
+        function* gen() {
+            console.log('hello')
+            yield '一只没有耳朵'
+            console.log('111')
+            yield '一只没有尾巴'
+            console.log('222')
+            yield '真奇怪'
+            console.log('333')
+        }
+        let iterator = gen()
+        // iterator.next()
+        // iterator.next()
+        // iterator.next()
+        // iterator.next()
+        //遍历
+        for (let v of gen()) {
+            console.log(v)
+        }
+
+
+
+        function* gen2(arg) {
+            console.log(arg)
+            let one = yield 111;
+            console.log(one)
+            let two = yield 222;
+            console.log(two)
+            let three = yield 333;
+            console.log(three)
+        }
+
+        //执行获取迭代器对象
+        let iterator2 = gen2('AAA');
+        console.log(iterator2.next())
+        //next方法可以传入实参
+        console.log(iterator2.next('BBB'))
+        console.log(iterator2.next('CCC'))
+        console.log(iterator2.next('DDD'))
+
+
+        //异步编程 文件操作 网络操作 数据库操作
+        //1S 后控制台输出111 2s后222 3s后333
+        // setTimeout(() => {
+        //     console.log(111)
+        //     setTimeout(() => {
+        //         console.log(222)
+        //         setTimeout(() => {
+        //             console.log(333)
+        //         }, 3000)
+        //     }, 2000)
+        // }, 1000)
+        function one() {
+            console.log('调用1')
+            setTimeout(() => {
+                console.log(1)
+            }, 1000)
+        }
+        function two() {
+            setTimeout(() => {
+                console.log(2)
+            }, 2000)
+        }
+        function three() {
+            setTimeout(() => {
+                console.log(3)
+            }, 3000)
+        }
+        function* test() {
+            yield one()
+            yield two()
+            yield three()
+        }
+        let iterator3 = test()
+        iterator3.next()
+
+
+        //实例2
+        function getUsers(){
+            setTimeout(()=>{
+                let data = '用户数据'
+                //调用next方法并将数据传入
+                iterator4.next(data)
+            },1000)
+        }
+
+        function getOrders(){
+            setTimeout(()=>{
+                let data = '订单数据'
+                iterator4.next(data)
+            },1000)
+        }
+
+        
+        function getGoods(){
+            setTimeout(()=>{
+                let data = '商品数据'
+                iterator4.next(data)
+            },1000)
+        }
+
+        function* getData(){
+            let users = yield getUsers()
+            console.log(users)
+            let orders = yield getOrders()
+            console.log(orders)
+            let goods = yield getGoods()
+            console.log(goods)
+        }
+
+        //调用生成器函数
+        let iterator4 = getData()
+        iterator4.next()
+    </script>
+</body>
+
+</html>
