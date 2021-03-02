@@ -12,8 +12,24 @@
         
         //实例化promise对象
         const p = new Promise(function(resolve,reject){
-            
+            setTimeout(() => {
+                // let data = '数据库中的数据'
+                // resolve(data)
+                let err = '数据读取失败'
+                reject(err)
+            }, 3000);
         })
+
+        //调用promise对象的then方法
+        p.then((value)=>{
+            console.log(value)
+        },(err)=>{
+            console.log(err)
+        })
+
+
+        
+
     </script>
 </body>
 </html>
