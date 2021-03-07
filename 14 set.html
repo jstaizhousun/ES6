@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //set集合，类似于数组，成员的值都是唯一的，集合实现了iterator接口，可以通过...和 for of进行遍历
+        // 1)size 返回集合的元素个数
+        // 2)add  返回集合的元素个数
+        // 3)delete 返回bollean
+        // 4)has 检测集合中书否包含某个元素，返回boolean值
+        let s = new Set()
+        let s2 = new Set(['d','s','b'])
+        console.log(s, typeof s)
+        console.log(s2.size)
+        s2.add('a')
+        console.log(s2)
+        s2.delete('a')
+        console.log(s2)
+        console.log(s2.has('d'))
+        
+        
+        let arr = [1,2,3,4,5,4,6,45,7,34,7,3,12,1]
+        //数组去重
+        let result1 = [...new Set(arr)]
+        //交集
+        let arr2 = [4,5,6,5,6]
+        let result2 = [...new Set(arr)].filter(item=>{
+            let s2 = new Set(arr2)
+            if(s2.has(item)){
+                return true
+            }else{
+                return false
+            }
+        })
+        //并集
+        let result3 = [...new Set([...arr,...arr2])]
+    </script>
+</body>
+</html>
