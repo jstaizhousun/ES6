@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //声明对象
+    const o = {
+      name:'sam',
+      age:'15',
+      height:'180',
+      weight:'200'
+    }
+    //获取所有的键
+    console.log(Object.keys(o))
+    //获取所有的值
+    console.log(Object.values(o))
+    //entries
+    console.log(Object.entries(o))
+    const m = new Map(Object.entries(o))
+    //getOwnPropertyDsecriptors
+    console.log(Object.getOwnPropertyDescriptors(o))
+  </script>
+</body>
+</html>

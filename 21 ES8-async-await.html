@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function dingshi() {
+        //返回的是字符串
+        // return '123'
+        //返回结果不是promise对象,返回的则为成功的promise对象
+        // return
+        //返回的结果是一个promise对象
+        return new Promise((resolve, reject) => {
+          resolve('成功')
+        })
+      }
+      const result = dingshi()
+      console.log(result)
+      result.then((res) => {
+        console.log(res)
+      })
+
+      //async await
+      function step1() {
+        return new Promise((resolve, reject) => {
+          resolve('成功')
+        })
+      }
+      function step2() {
+        return new Promise((resolve, reject) => {
+          reject('失败')
+        })
+      }
+      const p1 = step1()
+      const p2 = step2()
+      async function main() {
+       try{
+        const result = await p1
+        console.log(result)
+        const result2 = await p2
+        console.log(result2)
+       }catch(e){
+         console.log(e)
+       }
+      }
+      main()
+    </script>
+  </body>
+</html>

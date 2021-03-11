@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //私有属性
+      class Person {
+        //公有属性
+        name
+        //私有属性
+        #age
+        #weight
+        //构造方法
+        constructor(name, age, weight) {
+          this.name = name
+          this.#age = age
+          this.#weight = weight
+        }
+      }
+      const girl = new Person('sam', 16, 239)
+      // console.log(girl.#age)
+
+      //promise.allSettled
+      const a = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('我是aaaa')
+        }, 1000)
+      })
+      const b = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('我是bbbb')
+        }, 1000)
+      })
+      const result = Promise.allSettled([a, b])
+      result.then((res) => {
+        console.log(res)
+      })
+      // 字符串方法 matchAll
+      const str2 =
+        '<ul><li><a>肖申克的救赎</a><p>2017-1</p></li><li><a  >水煮鱼</a><p>2018-3</p></li><li><a>星球之光</a><p>2020-3</p></li></ul>'
+      const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs
+      const result2 = str2.matchAll(reg)
+      console.log([...result2])
+      //可选链操作符?.
+      function main(config) {
+        const dbHost = config?.db?.host
+        console.log(dbHost)
+      }
+      main({
+        db: {
+          host: '192.168.110',
+          userName: 'root'
+        },
+        catch: {
+          host: '192.168.200',
+          userName: 'sam'
+        }
+      })
+      //动态import
+
+      //Bigint大整型
+      let n = 521n
+      console.log(n, typeof n)
+
+      //globalThis 始终指向全局对象
+      console.log(globalThis)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function connect(host,port,...user){
+      console.log(host)
+      console.log(port)
+      console.log(...user)
+    }
+    connect('127.0.0.1',3300,'root','root')
+    const o = {
+      name:'sam'
+    }
+    const o2 = {
+      age:'16'
+    }
+    console.log({...o,...o2})
+  </script>
+</body>
+</html>

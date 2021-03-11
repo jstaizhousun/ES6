@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //提取链接地址和内容
+      const a = '<a href="http://www.baidu.com">百度搜索</a>'
+      const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/
+      const result = reg.exec(a)
+      console.log(result.groups)
+    </script>
+  </body>
+</html>
